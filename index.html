@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>CHEMEX · Halloween de miedo</title>
+<style>
+  :root {
+    --bg: #101010;
+    --panel: #191919;
+    --text: #f7f3ed;
+    --muted: #bcb5ac;
+    --orange: #ff7a1a;
+    --orange-light: #ffb36d;
+    --line: rgba(255,255,255,.12);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--text);
+    background:
+      radial-gradient(ellipse at 85% 8%, rgba(255,122,26,.16), transparent 33rem),
+      radial-gradient(ellipse at 0% 55%, rgba(255,122,26,.07), transparent 30rem),
+      var(--bg);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+  header { padding: 26px 0; border-bottom: 1px solid var(--line); }
+  .brand { display:flex; align-items:center; gap:12px; letter-spacing:.18em; font-weight:800; font-size:.9rem; }
+  .brand-mark { width:10px; height:10px; border-radius:50%; background:var(--orange); box-shadow:0 0 22px rgba(255,122,26,.7); }
+  .brand small { color:var(--muted); font-weight:500; letter-spacing:.08em; }
+  .hero { min-height: 570px; display:grid; align-items:center; padding:72px 0 64px; }
+  .eyebrow { color:var(--orange-light); text-transform:uppercase; letter-spacing:.2em; font-size:.76rem; font-weight:800; }
+  h1 { font-size:clamp(3rem, 8vw, 6.8rem); line-height:.95; letter-spacing:-.065em; margin:20px 0 24px; max-width:900px; }
+  h1 span { color:var(--orange); }
+  .lead { color:#e5ded5; font-size:clamp(1.1rem, 2.4vw, 1.45rem); max-width:660px; margin:0 0 30px; }
+  .hero-meta { display:flex; gap:12px; flex-wrap:wrap; margin-top:34px; }
+  .pill { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line); border-radius:999px; padding:9px 14px; color:#eee6dc; font-size:.9rem; }
+  .pill strong { color:var(--orange-light); }
+  .hero-card { background:linear-gradient(135deg, rgba(255,122,26,.16), rgba(255,255,255,.025)); border:1px solid rgba(255,122,26,.28); border-radius:24px; padding:26px; max-width:680px; margin-top:38px; }
+  .hero-card p { margin:0; font-size:clamp(1.15rem, 2.3vw, 1.6rem); font-weight:750; }
+  section { padding:70px 0; border-top:1px solid var(--line); }
+  .section-kicker { color:var(--orange-light); text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; font-weight:800; margin-bottom:12px; }
+  h2 { font-size:clamp(2rem, 4vw, 3.3rem); letter-spacing:-.045em; line-height:1.05; margin:0 0 18px; }
+  .intro { max-width:700px; color:var(--muted); font-size:1.08rem; margin:0 0 32px; }
+  .steps { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px; }
+  .step { border:1px solid var(--line); border-radius:18px; padding:22px; background:rgba(255,255,255,.025); min-height:145px; }
+  .num { color:var(--orange); font-weight:900; font-size:.85rem; letter-spacing:.12em; }
+  .step h3 { margin:9px 0 7px; font-size:1.12rem; }
+  .step p { margin:0; color:var(--muted); }
+  .prize { display:grid; grid-template-columns: .85fr 1.15fr; gap:28px; align-items:stretch; }
+  .prize-visual { min-height:290px; border-radius:22px; background:linear-gradient(145deg, #351a0a, #17120f 65%); border:1px solid rgba(255,122,26,.3); display:flex; align-items:center; justify-content:center; text-align:center; padding:30px; }
+  .prize-visual .emoji { font-size:4rem; display:block; margin-bottom:12px; }
+  .prize-visual strong { display:block; font-size:1.8rem; line-height:1.1; }
+  .prize-visual span { color:var(--orange-light); }
+  .prize-copy { padding:28px; border:1px solid var(--line); border-radius:22px; background:rgba(255,255,255,.025); }
+  .prize-copy h3 { margin:0 0 10px; font-size:1.35rem; }
+  .prize-copy p { color:var(--muted); margin:0 0 16px; }
+  .benefits { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; }
+  .benefit { padding:18px; border-left:2px solid var(--orange); background:rgba(255,255,255,.025); border-radius:0 12px 12px 0; }
+  .benefit strong { display:block; margin-bottom:4px; }
+  .benefit span { color:var(--muted); font-size:.95rem; }
+  .closing { text-align:center; padding:82px 0 90px; }
+  .closing h2 { max-width:850px; margin:0 auto 18px; }
+  .closing p { color:var(--muted); max-width:650px; margin:0 auto; }
+  .note { margin-top:30px; border:1px solid var(--line); background:rgba(255,255,255,.025); border-radius:14px; padding:18px 20px; color:var(--muted); font-size:.9rem; text-align:left; }
+  footer { padding:24px 0 32px; color:#8f8880; font-size:.82rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  @media (max-width:700px) {
+    .wrap { width:min(100% - 28px, 1080px); }
+    header { padding:20px 0; }
+    .hero { min-height:auto; padding:64px 0 50px; }
+    .steps, .prize, .benefits { grid-template-columns:1fr; }
+    section { padding:54px 0; }
+    .step { min-height:0; }
+    .prize-visual { min-height:230px; }
+    .hero-card { padding:22px; }
+  }
+  @media print {
+    body { background:#101010 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .hero { min-height:480px; }
+    section { break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap brand">
+    <span class="brand-mark"></span>
+    <span>CHEMEX</span>
+    <small>· PROPUESTA DE CAMPAÑA</small>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Halloween · Sábado 31 de octubre</div>
+      <h1>HALLOWEEN<br><span>DE MIEDO.</span></h1>
+      <p class="lead">Una acción especial para celebrar Halloween en CHEMEX, atraer clientes al local y convertir los disfraces de la noche en contenido para Instagram.</p>
+      <div class="hero-meta">
+        <span class="pill">🎃 <strong>Ven disfrazado</strong></span>
+        <span class="pill">🍽️ Gana una cena para dos</span>
+      </div>
+      <div class="hero-card">
+        <p>Este Halloween, el mejor disfraz no solo se lleva todas las miradas… <span style="color:var(--orange)">¡también se lleva una cena para dos!</span></p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">01 · La idea</div>
+      <h2>Ven disfrazado.<br>Gana una cena para dos.</h2>
+      <p class="intro">El sábado 31 de octubre, CHEMEX invitará a sus clientes a participar en una dinámica para encontrar el mejor disfraz de la noche. Las fotografías se compartirán en las historias de Instagram para que la comunidad vote por su favorito.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">02 · Cómo participar</div>
+      <h2>Una dinámica sencilla.</h2>
+      <p class="intro">La participación ocurre en el restaurante; Instagram será el espacio donde la comunidad descubra los disfraces y vote.</p>
+      <div class="steps">
+        <article class="step">
+          <div class="num">PASO 01</div>
+          <h3>Ven a CHEMEX disfrazado</h3>
+          <p>Visita el restaurante el sábado 31 de octubre con tu disfraz de Halloween.</p>
+        </article>
+        <article class="step">
+          <div class="num">PASO 02</div>
+          <h3>Hazte la foto</h3>
+          <p>Se tomará una fotografía de cada participante con su consentimiento.</p>
+        </article>
+        <article class="step">
+          <div class="num">PASO 03</div>
+          <h3>Comparte tu disfraz en historias</h3>
+          <p>Las fotos se publicarán en las historias de Instagram de CHEMEX.</p>
+        </article>
+        <article class="step">
+          <div class="num">PASO 04</div>
+          <h3>¡Que gane el favorito!</h3>
+          <p>La comunidad votará durante las 12 horas posteriores a la publicación de cada fotografía. Al terminar, se anunciará al ganador.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prize">
+      <div class="prize-visual">
+        <div>
+          <span class="emoji">🍽️ 🎃</span>
+          <strong>UNA CENA<br><span>PARA DOS</span></strong>
+        </div>
+      </div>
+      <div class="prize-copy">
+        <div class="section-kicker">03 · El premio</div>
+        <h3>Una experiencia para disfrutar después de Halloween.</h3>
+        <p>El ganador recibirá una cena para dos personas, que podrá disfrutar otro día en una fecha acordada previamente con CHEMEX.</p>
+        <p style="margin-bottom:0">La propuesta busca premiar la creatividad de los clientes y darles un motivo extra para visitar CHEMEX durante Halloween.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">04 · Objetivos</div>
+      <h2>Una visita que también se comparte.</h2>
+      <p class="intro">La acción conecta la experiencia presencial con la comunidad digital de CHEMEX.</p>
+      <div class="benefits">
+        <div class="benefit"><strong>Atraer visitas</strong><span>Dar a los clientes una razón para acercarse al local el 31 de octubre.</span></div>
+        <div class="benefit"><strong>Activar Instagram</strong><span>Generar votos, respuestas e interacción en las historias.</span></div>
+        <div class="benefit"><strong>Ampliar el alcance</strong><span>Animar a los participantes a compartir las historias con amigos.</span></div>
+        <div class="benefit"><strong>Crear contenido real</strong><span>Mostrar a la comunidad CHEMEX disfrutando de Halloween.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing">
+    <div class="wrap">
+      <div class="section-kicker">CHEMEX · Halloween de miedo</div>
+      <h2>El disfraz que se lleva la noche. 👻</h2>
+      <p>Una propuesta participativa, fácil de ejecutar y pensada para convertir Halloween en una experiencia divertida para los clientes y en contenido auténtico para las redes de CHEMEX.</p>
+      <div class="note"><strong style="color:var(--text)">Antes de anunciar la campaña:</strong> definir las bases del concurso, el horario de participación, cómo se contabilizarán los votos, la gestión de empates y la fecha límite para disfrutar el premio. Confirmar también el consentimiento para fotografiar y publicar a cada participante.</div>
+    </div>
+  </div>
+</main>
+
+<footer class="wrap">
+  <span>CHEMEX · Halloween de miedo 🎃</span>
+  <span>Propuesta de campaña · 31 de octubre de 2026</span>
+</footer>
+</body>
+</html>
